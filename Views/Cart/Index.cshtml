@@ -1,0 +1,36 @@
+﻿@using Microsoft.AspNetCore.Mvc.TagHelpers;
+@model ProductManagement.Models.ViewModels.CartIndexViewModel
+
+<h2>Your Cart</h2>
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>Item</th>
+            <th>Quantity</th>
+            <th class="text-right">Price</th>
+            <th class="text-right">Subtotal</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.cart.Items)
+        {
+            <tr>
+                <td class="text-left">@item.product.Name</td>
+                <td class="text-left"><input type="number" value="@item.Quantity" /></td>
+                <td class="text-right">@item.product.Price.ToString("#,# VND")</td>
+                <td class="text-right">@((item.product.Price * item.Quantity).ToString("#,# VND"))</td>
+                <td class="text-center">
+                    <a class="btn btn-danger" asp-controller="cart" asp-action="RemoveFromCart" asp-route-id="@item.product.Id">Remove</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+    <tfoot>
+        <tr>
+            <td colspan="3" class="text-right">Total:</td>
+            <td class="text-right">@Model.cart.ComputeTotalValue().ToString("#,# VND")</td>
+        </tr>
+    </tfoot>
+</table>
+<a asp-controller="Cart" asp-action="Clear" class="btn btn-outline-primary">Clear</a>
+<a style="margin-left: 1rem" asp-controller="Shopping" asp-action="List" class="btn btn-outline-primary">Back to shop</a>

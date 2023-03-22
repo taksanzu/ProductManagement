@@ -1,0 +1,21 @@
+﻿@model IEnumerable<ProductManagement.Models.Products.Product>
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<button type="button m-3" class="btn btn-primary">
+    <a asp-action="AddProduct" class="text-decoration-none text-white">Create</a>
+</button>
+
+@foreach (var product in @Model)
+{
+    <div class="card m-3" style="width: 18rem;">
+        <img class="card-img-top" src="~/images/@product.Photopath" alt="@product.Name">
+        <div class="card-body">
+            <h5 class="card-title">@product.Name</h5>
+            <p class="card-text">@product.Description</p>
+            <a asp-action="UpdateProduct" asp-route-id="@product.Id" class="btn btn-primary" id="tag-a-open-update">Update</a>
+            <a asp-action="DeleteProduct" asp-route-id="@product.Id" class="btn btn-primary" id="tag-a-delete">Delete</a>
+        </div>
+    </div>
+}

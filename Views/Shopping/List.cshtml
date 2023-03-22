@@ -1,0 +1,31 @@
+﻿@model ProductManagement.Models.ViewModels.ProductListViewModel
+
+<div class="container text-center">
+    <div class="row align-content-md-start" style="margin-top: 2rem">
+        <div class="col-1 row-cols-1">
+            <h6>Category</h6>
+            @await Component.InvokeAsync("NavigationMenuComponent")
+        </div>
+    <div class="row align-content-md-start" style="margin-top: 2rem">
+        <div class="col">
+            <div class="row row-cols-3 ">
+                @foreach (var item in Model.Products)
+                {
+                    <div class="col">
+                        <div class="card" style="width: 18rem; margin-bottom: 2rem; border-radius: 1rem ">
+                            <a asp-controller="Shopping" asp-action="Index" asp-route-id="@item.Id">
+                                <img style="border-top-left-radius: 1rem; border-top-right-radius: 1rem" src="~/images/@item.Photopath" class="card-img-top" alt="...">
+                            </a>
+                            <div class="card-body">
+                                <h4 class="card-title">@Html.DisplayFor(modelItem => item.Name)</h4>
+                                <p class="card-text">@Html.DisplayFor(modelItem => item.Description)</p>
+                                    <p class="card-text">@Html.DisplayFor(modelItem => item.Price) Đồng</p>
+                                <a asp-controller="Cart" asp-action="AddToCart" asp-route-id="@item.Id" class="btn btn-outline-primary">Add to cart</a>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,37 @@
+﻿@model ProductManagement.Models.Products.Product
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Add Product</title>
+</head>
+<body>
+    <div>
+        <form asp-action="AddProduct" enctype="multipart/form-data" method="post">
+            <div asp-validation-summary="All" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Name">Name:</label>
+                <input asp-for="Name" type="text" class="form-control"/>
+            </div>
+            <div class="form-group">
+                <label asp-for="Description">Decription:</label>
+                <input asp-for="Description" type="text" class="form-control">
+            </div>
+            <div class="form-group">
+                <label asp-for="Price">Price:</label>
+                <input asp-for="Price" type="number" class="form-control">
+            </div>
+            <div class="form-group">
+                <label asp-for="Category">Category:</label>
+                <input asp-for="Category" type="text" class="form-control">
+            </div>
+            <div class="form-group">
+                <label asp-for="Photopath">Photo Path:</label>
+                <input asp-for="Photopath" type="file" class="form-control">
+            </div>
+            <button type="submit" class="btn btn-primary">Create</button>
+        </form>
+    </div>
+</body>
+</html>

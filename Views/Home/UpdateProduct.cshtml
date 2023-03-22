@@ -1,0 +1,33 @@
+﻿@model ProductManagement.Models.Products.Product
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Update Product</title>
+</head>
+<body>
+    <div>
+        <form asp-action="UpdateProduct">
+            <div asp-validation-summary="All" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Name">Name:</label>
+                <input asp-for="Name" type="text" class="form-control" id="exampleInputName" aria-describedby="nameHelp" />
+            </div>
+            <div class="form-group">
+                <label asp-for="Description">Decription:</label>
+                <input asp-for="Description" type="text" class="form-control" id="exampleInputEmail" aria-describedby="emailHelp">
+            </div>
+            <div class="form-group">
+                <label asp-for="Price">Price:</label>
+                <input asp-for="Price" type="number" class="form-control" id="exampleInputEmail" aria-describedby="emailHelp">
+            </div>
+            <div class="form-group">
+                <label asp-for="Category">Category:</label>
+                <input asp-for="Category" type="text" class="form-control" id="exampleInputEmail" aria-describedby="emailHelp">
+            </div>
+            <button type="submit" class="btn btn-primary">Update</button>
+        </form>
+    </div>
+</body>
+</html>
